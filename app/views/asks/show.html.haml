@@ -1,10 +1,19 @@
-%h1= @ask.title
-%p= @ask.description
-= image_tag @ask.image.url(:medium)
-%p
-Submitted by
-= @ask.user.id
-
-= link_to "Back", root_path
-= link_to "Edit", edit_ask_path
-= link_to "Delete", ask_path, method: :delete, data: { confirm: "Are you sure?"}
+#ask_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-default
+			.panel-heading.ask_image
+				= image_tag @ask.image.url()
+			.panel-body
+				%h1= @ask.title
+				%p.description= @ask.description
+				%p
+			.panel-footer
+				.row
+					.col-md-6
+						%p.user
+							Submitted by
+							= @ask.user.id
+					.col-md-6
+						.btn-group.pull-right
+							= link_to "Edit", edit_ask_path, class: "btn btn-default"
+							= link_to "Delete", ask_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default"

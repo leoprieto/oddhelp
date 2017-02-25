@@ -1,3 +1,9 @@
-- @asks.each do |ask|
-	= link_to (image_tag ask.image.url(:medium)), ask
-	%h2= link_to ask.title, ask
+#asks.transitions-enabled
+	- @asks.each do |ask|
+		.box.panel.panel-default
+			= link_to (image_tag ask.image.url()), ask
+			.panel-body
+				%h2= link_to ask.title, ask
+				%p.user
+				Submitted by
+				= ask.user.id
