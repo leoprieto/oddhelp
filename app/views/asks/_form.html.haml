@@ -1,0 +1,17 @@
+= simple_form_for @ask, html: { multipart: true } do |f|
+	- if @ask.errors.any?
+		#errors
+			%h2
+			= pluralize(@ask.errors.count, "error")
+			prevented this Ask from saving
+			%ul
+				- @ask.errors.full_messages.each do |msg|
+					%li= msg
+
+	.form-group
+		= f.input :title, input_html: { class: 'form-control', :minlength => 0 , maxlength: 250 }
+
+	.form-group
+		= f.input :description, input_html: { class: 'form-control', :minlength => 0 , maxlength: 250 }
+
+	= f.button :submit, class: "btn btn-primary"
