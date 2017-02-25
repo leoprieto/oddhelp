@@ -1,5 +1,5 @@
 class AsksController < ApplicationController
-	before_action :find_ask, only: [:show, :edit, :update, :destroy]
+	before_action :find_ask, only: [:show, :edit, :update, :destroy, :upvote]
 
 	def index
 		@asks = Ask.all.order("created_at DESC")
@@ -36,6 +36,11 @@ class AsksController < ApplicationController
 	def destroy
 		@ask.destroy
 		redirect_to root_path
+	end
+
+	def upvote
+		@ask.upvote_by current_user
+		redirect_to :back
 	end
 
 	private

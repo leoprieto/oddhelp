@@ -15,5 +15,8 @@
 							= @ask.user.id
 					.col-md-6
 						.btn-group.pull-right
+							= link_to like_ask_path(@ask), method: :put, class: "btn btn-default" do
+								%span.glyphicon.glyphicon-heart
+									= @ask.get_upvotes.size
 							= link_to "Edit", edit_ask_path, class: "btn btn-default"
 							= link_to "Delete", ask_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default"
