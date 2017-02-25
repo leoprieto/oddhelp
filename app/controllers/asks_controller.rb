@@ -9,11 +9,11 @@ class AsksController < ApplicationController
 	end
 
 	def new
-		@ask = Ask.new
+		@ask = current_user.asks.build
 	end
 
 	def create
-		@ask = Ask.new(ask_params)
+		@ask = current_user.asks.build(ask_params)
 
 		if @ask.save
 			redirect_to @ask, notice: "Exito Guardadamente nuevo Ask!"
