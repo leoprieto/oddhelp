@@ -12,11 +12,12 @@
 					.col-md-6
 						%p.user
 							Submitted by
-							= @ask.user.id
+							= @ask.user.email
 					.col-md-6
 						.btn-group.pull-right
 							= link_to like_ask_path(@ask), method: :put, class: "btn btn-default" do
 								%span.glyphicon.glyphicon-heart
 									= @ask.get_upvotes.size
-							= link_to "Edit", edit_ask_path, class: "btn btn-default"
-							= link_to "Delete", ask_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default"
+							- if user_signed_in?
+								= link_to "Edit", edit_ask_path, class: "btn btn-default"
+								= link_to "Delete", ask_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default"

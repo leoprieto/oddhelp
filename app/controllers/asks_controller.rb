@@ -1,5 +1,6 @@
 class AsksController < ApplicationController
 	before_action :find_ask, only: [:show, :edit, :update, :destroy, :upvote]
+	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
 		@asks = Ask.all.order("created_at DESC")
