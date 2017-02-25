@@ -1,5 +1,6 @@
 %h1= @ask.title
 %p= @ask.description
+= image_tag @ask.image.url(:medium)
 %p
 Submitted by
 = @ask.user.id

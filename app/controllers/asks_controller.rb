@@ -41,7 +41,7 @@ class AsksController < ApplicationController
 	private
 
 	def ask_params
-		params.require(:ask).permit(:title, :description)
+		params.require(:ask).permit(:title, :description, :image)
 	end
 
 	def find_ask
